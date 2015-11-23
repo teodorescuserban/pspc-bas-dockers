@@ -14,4 +14,5 @@ RUN apt-get -qq update && \
     pip3 -q install --upgrade \
         gunicorn \
         gevent \
-        lxml
+        lxml \
+        virtualenv
