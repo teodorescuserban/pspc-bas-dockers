@@ -1,4 +1,4 @@
-FROM teodorescuserban/pscp-base:latest
+FROM docker.io/teodorescuserban/pspc-base:latest
 
 MAINTAINER Serban Teodorescu, teodorescu.serban@gmail.com
 

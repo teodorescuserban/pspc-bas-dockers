@@ -1,4 +1,4 @@
-FROM teodorescuserban/pspc-base-python:latest
+FROM docker.io/teodorescuserban/pspc-base-python3:latest
 
 MAINTAINER Serban Teodorescu, teodorescu.serban@gmail.com
 

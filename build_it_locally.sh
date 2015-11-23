@@ -2,6 +2,6 @@
 
 for image in base base-mysql base-python mysql api; do
 
-    docker build -t teodorescuserban/pspc-$image:latest $image/
+    docker build -t docker.io/teodorescuserban/pspc-$image:latest $image/
 
 done

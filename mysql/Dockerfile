@@ -1,4 +1,4 @@
-FROM teodorescuserban/pspc-base-mysql:latest
+FROM docker.io/teodorescuserban/pspc-base-mysql:latest
 
 MAINTAINER Serban Teodorescu, teodorescu.serban@gmail.com
 
