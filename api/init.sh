@@ -22,14 +22,19 @@ echo "Ensure wsgi file is correctly configured..."
 [ -f bas-api.py ] || cp -a bas-api.wsgi.TEMPLATE bas-api.py
 echo "Done."
 
-# import schema
-echo "Warning! All tables will be wiped out!"
-echo "Starting in 10 seconds. Hit Ctrl+C to abort..."
-sleep 10
-mysql -h ${MYSQL_HOST} -P ${MYSQL_PORT} -u ${MYSQL_USER} -p${MYSQL_PASS} ${MYSQL_DB} < sql/schema.sql
-echo "Done. Database is initialized."
+# import schema only if db is empty
+if [ $(mysql -Nr -h ${MYSQL_HOST} -P ${MYSQL_PORT} -u ${MYSQL_USER} -p${MYSQL_PASS} ${MYSQL_DB} -e 'show tables;' | wc -l) -le 6 ]; then
+    echo "Warning! All tables will be wiped out!"
+    echo "Starting in 10 seconds. Hit Ctrl+C to abort..."
+    sleep 10
+    mysql -h ${MYSQL_HOST} -P ${MYSQL_PORT} -u ${MYSQL_USER} -p${MYSQL_PASS} ${MYSQL_DB} < sql/schema.sql
+    echo "Done. Database is initialized."
+else
+    echo "Database looks initialized already."
+fi
 
 # run updates
+. /srv/bin/activate
 echo "Running updates."
 sh update-tenders.sh
 sh update-contracts.sh
