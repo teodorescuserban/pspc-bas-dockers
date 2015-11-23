@@ -12,7 +12,7 @@ RUN mkdir -p /etc/service/wsgi && \
     cd /srv/bas-api && \
     cp -a bas-api.wsgi.TEMPLATE bas-api.wsgi && \
     pip3 install pymysql && \
-    pip install flask && \
+    pip3 install flask && \
     python3 setup.py build && \
     echo "12 5 * * * root cd /srv/bas-api && /bin/sh update-tenders.sh" >> /etc/crontab && \
     echo "12 6 * * 0 root cd /srv/bas-api && /bin/sh update-contracts.sh" >> /etc/crontab && \

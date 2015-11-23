@@ -1,16 +1,18 @@
 # copyleft 2015 teodorescu.serban@gmail.com
 
 api:
+  hostname: api
   # image: teodorescuserban/pspc-api:latest
   build: api/
   ports:
     - "0.0.0.0:5000:5000"
   volumes:
     - "/mnt/data/vols/pspc/files:/srv/bas-api/Inputs"
-  link:
+  links:
     - db
 
 db:
+  hostname: db
   # image: teodorescuserban/pspc-mysql:latest
   build: mysql/
   ports:
